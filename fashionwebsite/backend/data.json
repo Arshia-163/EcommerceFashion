@@ -1,0 +1,34 @@
+{
+  "users": {
+    "arshia0045.be23@chitkara.edu.in": {
+      "name": "ARSHIA",
+      "email": "arshia0045.be23@chitkara.edu.in",
+      "password": "123456"
+    },
+    "ayushi005.be23@chitkara.edu.in": {
+      "name": "Ayushi ",
+      "email": "ayushi005.be23@chitkara.edu.in",
+      "password": "123456"
+    },
+    "prince.be23@chitkara.edu.in": {
+      "name": "prince",
+      "email": "prince.be23@chitkara.edu.in",
+      "password": "123467"
+    },
+    "aarav0085.be23@chitkara.edu.in": {
+      "name": "Aarav Sharma",
+      "email": "aarav0085.be23@chitkara.edu.in",
+      "password": "1420011"
+    },
+    "ramya0045.be23@chitkara.edu.in": {
+      "name": "Ramya",
+      "email": "ramya0045.be23@chitkara.edu.in",
+      "password": "123456"
+    },
+    "johndoe@example.com": {
+      "name": "John Doe",
+      "email": "johndoe@example.com",
+      "password": "password123"
+    }
+  }
+}

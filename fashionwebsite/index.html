@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Website </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
+      
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container ">
+            <a href="#" class="navbar-brand">
+                <img src="images/logo.jpg" alt="Pinterest Logo">
+        
+            </a>
+            <ul class="navbar-nav ">
+                <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+               
+                    <li class="nav-item"> <a href="#photo-boxes" class="nav-link">Clothes</a>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="nav-link">Explore</a>
+                    <div class="dropdown-content">
+                        <a href="#new-products">New Trends</a>
+                        <a href="#loved">Most-Loved Brands</a>
+                      
+                    </div>
+                </li>
+                <!-- <li class="dropdown category-dropdown">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-th-large"></i> 
+                        Features 
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="#about-us">About Us</a>
+                         <a href="#connect">Connect Us</a>
+                        
+                    </div>
+                </li> -->
+                <a href="#" class="navbar-link title-small has-state" onclick="showTranslate()">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Google_Translate_logo.svg/2048px-Google_Translate_logo.svg.png"
+                        alt="Google Translate Icon" style="height: 24px; width: 24px;">
+                </a>
+            </li>
+        
+
+            </ul>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search for products">
+            </div>
+            <div class="nav-icons">
+                <!-- <button class="login-btn" id="loginBtn">
+                    <i class="fas fa-user"></i> 
+                    Login
+                </button>
+                <i class="fas fa-bell"></i>
+                <i class="fas fa-heart"></i> -->
+                <div id="userInfo" style="display: none;">
+                  <span id="userName"></span>
+                  <button id="logoutBtn" class="logout-btn">Logout</button>
+                </div>
+                <!-- Show login button if not logged in -->
+                <button class="login-btn" id="loginBtn">
+                  <i class="fas fa-user"></i> Login
+                </button>
+</div>
+        </div>
+ </nav>
+ <div id="google_translate_element" style="display: none;"></div>
+
+    <main>
+        <section class="parallax">
+            <div class="banner-content">
+                <h2>New Arrivals!</h2>
+                <h1>Amazing Trends</h1>
+                
+            </div>
+            <img src="images/banner2.jpg" alt="Cosmetics Banner">
+        </section>
+        <section class="services">
+            <div class="service-item">
+                <h3>Store Locator</h3>
+                <p>Find Your Nearest Evans Store</p>
+            </div> 
+            <div class="service-item">
+                <h3>Free Shipping</h3>
+                <p>Free Returns & Exchanges</p>
+            </div>
+            <div class="service-item">
+                <h3>15 Days Returns</h3>
+                <p>When Your Order Over $100</p>
+            </div>
+            <div class="service-item">
+                <h3>Support 24/7</h3>
+                <p>When Your Order Over $100</p>
+            </div>
+        </section>
+
+        <section class="vibe-check">
+           
+            <h4>Pick A Mood,</h4>
+            <h4>Own The Moment</h4>
+        </section>
+        <section class="photo-boxes" id="photo-boxes">
+            <div class="photo-box">
+                <a href="page1.html">
+                <img src="images/photo1.avif" alt="Photo 1">
+                <div class="photo-overlay">
+                    <h3>EVERYDAY</h3>
+                    <p>EASE</p>
+                </div>
+            </a>
+            </div>
+            <div class="photo-box">
+                <a href="page1.html">
+                <img src="images/photo2.avif" alt="Photo 2">
+                <div class="photo-overlay">
+                    <h3>CORPORATE</h3>
+                    <p>CHIC</p>
+                </div>
+                </a>
+            </div>
+            <div class="photo-box">
+                <img src="images/photo4.avif" alt="Photo 3">
+                <a href="page1.html">
+                <div class="photo-overlay">
+                    <h3>PARTY</h3>
+                    <p>STUNNING</p>
+                </div>
+            </div>
+        </a>
+            </div>
+            <div class="photo-box">
+                <a href="page1.html">
+                <img src="images/photo3.avif" alt="Photo 4">
+                <div class="photo-overlay">
+                    <h3>THE CURVY</h3>
+                    <p>Collection</p>
+                </div>
+            </a>
+            </div>
+        </section>
+    </main>
+    <div class="deal text-center mt-5">
+        <h1 class="deal-heading">DEALS TO CATCH</h1>
+        <div class="countdown-box">
+            <div id="countdown" class="d-flex ">
+                <p>Deal Ends In</p>
+                <div class="time-box">
+                    <span id="hours">01</span><br>h
+                </div>
+                <div class="time-box">
+                    <span id="minutes">51</span><br>m
+                </div>
+                <div class="time-box">
+                    <span id="seconds">53</span><br>s
+                </div>
+            </div>
+        </div>
+
+        <div class="offer-box mx-auto mt-4">
+            <h2>MIN.</h2>
+            <h1>50% OFF</h1>
+            <p>ON DAILY ESSENTIALS</p>
+        </div>
+    </div>
+    <section id="loved">
+        <h1>Most-Loved Brands</h1>
+        <h2>Our Favourites For You</h2>
+        <section class="brand-grid">
+            <div class="brand-item">
+                <a href="page2/page2.html">
+                <div class="brand-image">
+                    <img src="images/sass.avif" alt="Sassafras">
+                
+                </div>
+            </a>
+                <div class="photo">Min. 65% Off</div>
+                <h3>SASSAFRAS</h3>
+            </div>
+            <div class="brand-item">
+                <div class="brand-image">
+                    <a href="page2/page2.html">
+                    <img src="images/hm.avif" alt="H&M">
+                
+                </div>
+            </a>
+                <div class="photo">Up To 50% Off</div>
+                <h3>H&M</h3>
+            </div>
+            <div class="brand-item">
+                <div class="brand-image">
+                    <a href="page2/page2.html">
+                    <img src="images/only.avif" alt="ONLY">
+                
+                </div>
+            </a>
+                <div class="photo">Min. 60% Off</div>
+                <h3>ONLY</h3>
+            </div>
+            <div class="brand-item">
+                <div class="brand-image">
+                    <img src="images/and.avif" alt="AND">
+                    
+                </div>
+                 <div class="photo">Min. 65% Off</div>
+                <h3>AND</h3>
+            </div>
+            <div class="brand-item">
+                <div class="brand-image">
+                    <img src="images/van.avif" alt="VanHeusen">
+                
+                </div>
+                <div class="photo">Min. 40% Off</div>
+                <h3>VanHeusen</h3>
+            </div>
+            <div class="brand-item">
+                <div class="brand-image">
+                    <img src="images/vera.avif" alt="Vero Moda">
+            
+                </div>
+                 <div class="photo">Min. 60% Off</div>
+                <h3>VERO MODA</h3>
+            </div>
+           
+        </section>
+    </section>
+
+<section id="new-products">
+  <h2 class="section-heading">New Products</h2>
+
+
+  <div class="product-box">
+    <div class="product-image">
+      <img src="images/clothes-4.jpg" alt="Men's Winter Leathers Jacket" class="default-image">
+      <img src="images/clothes-3.jpg" alt="Alternate View" class="hover-image">
+      <span class="badge"></span>
+      <div class="product-icons">
+        <i class="wishlist-icon">&#10084;</i>
+        <i class="cart-icon">&#128722;</i>
+      </div>
+    </div>
+    <div class="product-info">
+      <p class="product-category">JACKET</p>
+      <h4>Women Skirt</h4>
+      <div class="product-rating">⭐⭐⭐⭐⭐</div>
+      <div class="product-price">
+        <span>Rs.590.00</span>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="product-box">
+    <div class="product-image">
+      <img src="images/jacket-3.jpg" alt="Men's Winter Leathers Jacket" class="default-image">
+      <img src="images/jacket-4.jpg" alt="Alternate View" class="hover-image">
+      <span class="badge">15%</span>
+      <div class="product-icons">
+        <i class="wishlist-icon">&#10084;</i>
+        <i class="cart-icon">&#128722;</i>
+      </div>
+    </div>
+    <div class="product-info">
+      <p class="product-category">JACKET</p>
+      <h4> Winter Leathers Jackets</h4>
+      <div class="product-rating">⭐⭐⭐⭐⭐</div>
+      <div class="product-price">
+        <span>Rs.4800.00</span>
+        <span class="old-price">Rs.7500</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-box">
+    
+    <div class="product-image">
+      <img src="images/shorts-1.jpg" alt="Men's Winter Leathers Jacket" class="default-image">
+      <img src="images/shorts-2.jpg" alt="Alternate View" class="hover-image">
+      <span class="badge">5%</span>
+      <div class="product-icons">
+        <i class="wishlist-icon">&#10084;</i>
+        <i class="cart-icon">&#128722;</i>
+      </div>
+    </div>
+    <div class="product-info">
+      <p class="product-category">Shorts</p>
+      <h4>Women Shorts pair</h4>
+      <div class="product-rating">⭐⭐⭐⭐⭐</div>
+      <div class="product-price">
+        <span>Rs.800.00</span>
+        <span class="old-price">Rs.900.00</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-box">
+    <div class="product-image">
+      <img src="images/jewellery-1.jpg" alt="Earing" class="default-image">
+      <img src="images/jewellery-2.jpg" alt="Alternate View" class="hover-image">
+      <span class="badge">10%</span>
+      <div class="product-icons">
+        <i class="wishlist-icon">&#10084;</i>
+        <i class="cart-icon">&#128722;</i>
+      </div>
+    </div>
+    <div class="product-info">
+      <p class="product-category">Jewellery</p>
+      <h4>Stunning Earings</h4>
+      <div class="product-rating">⭐⭐⭐⭐</div>
+      <div class="product-price">
+        <span>  Rs.480.00</span>
+        <span class="old-price">Rs.550</span>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="product-box">
+    <div class="product-image">
+      <img src="images/clothes-1.jpg" alt="Men's Winter Leathers Jacket" class="default-image">
+      <img src="images/clothes-2.jpg" alt="Alternate View" class="hover-image">
+      <!-- <span class="badge">15%</span> -->
+      <div class="product-icons">
+        <i class="wishlist-icon">&#10084;</i>
+        <i class="cart-icon">&#128722;</i>
+      </div>
+    </div>
+    <div class="product-info">
+      <p class="product-category">Tops</p>
+      <h4>Women Tops</h4>
+      <div class="product-rating">⭐⭐⭐⭐</div>
+      <div class="product-price">
+        <span>Rs.300.00</span>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="product-box">
+    <div class="product-image">
+      <img src="images/party-wear-1.jpg" alt="Men's Winter Leathers Jacket" class="default-image">
+      <img src="images/party-wear-2.jpg" alt="Alternate View" class="hover-image">
+      <span class="badge">30%</span>
+      <div class="product-icons">
+        <i class="wishlist-icon">&#10084;</i>
+        <i class="cart-icon">&#128722;</i>
+      </div>
+    </div>
+    <div class="product-info">
+      <p class="product-category">FootWear</p>
+      <h4>Heels Pair</h4>
+      <div class="product-rating">⭐⭐⭐</div>
+      <div class="product-price">
+        <span>Rs.1208.00</span>
+        <span class="old-price">Rs.3500.00</span>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="product-box">
+    <div class="product-image">
+      <img src="images/sports-5.jpg" alt="Men's Winter Leathers Jacket" class="default-image">
+      <img src="images/sports-4.jpg" alt="Alternate View" class="hover-image">
+      <span class="badge">10%</span>
+      <div class="product-icons">
+        <i class="wishlist-icon">&#10084;</i>
+        <i class="cart-icon">&#128722;</i>
+      </div>
+    </div>
+    <div class="product-info">
+      <p class="product-category">Shoes</p>
+      <h4></h4>
+      <div class="product-rating">⭐⭐⭐⭐⭐</div>
+      <div class="product-price">
+        <span>Rs.3600</span>
+        <span class="old-price">Rs.5500</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- About-us section -->
+    
+
+<section id="about-us">
+    <h2>What People Say About Us</h2>
+    <p>customers about their experiences with the brand, the quality of the products, customer service, and overall satisfaction.</p>
+    <div class="test-container">
+        <div class="test-box">
+            <p>"Amazing Quality and Style!"
+                I recently bought a dress from Fashion Fit, and I was blown away by the quality and design. The fabric feels luxurious, and the fit is perfect. I received so many compliments when I wore it. This brand never disappoints!</p>
+            <div class="customer-info">
+                <img src="images/dot1.jpg" alt="Anisa Zahir">
+                <h4>Sophia K.</h4>
+                <p>Fashion Enthusiast</p>
+            </div>
+        </div>
+        <div class="test-box">
+            <p>"Great Customer Service!"
+                I had an issue with my order, and the customer service team was incredibly helpful. They resolved my problem quickly and even provided a discount on my next purchase. I'm so impressed with how they treat their customers. Thank you!</p>
+            <div class="customer-info">
+                <img src="images/dot2.jpg" alt="Anisa Zahir">
+                <h4>Anisa Zahir</h4>
+                <p>Customer</p>
+            </div>
+        </div>
+        <div class="test-box">
+            <p>
+                "Trendy and Affordable!"
+                I love shopping at Fashion Fit because they offer the latest fashion trends at affordable prices. The quality is excellent, and I always find something that suits my style. I highly recommend this brand to all fashion lovers!</p>
+            <div class="customer-info">
+                <img src="images/dot3.jpg" alt="Anisa Zahir">
+                <h4>Megan S.</h4>
+                <p>Trendsetter</p>
+            </div>
+        </div>
+    </div>
+    <div class="dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+</section>
+
+
+    <section id="services">
+    <h2>SERVICES</h2>
+    
+    
+    <div class="service-box">
+      <div class="service-item">
+        <div class="image-container">
+          <img src="images/s1.png" alt="Style Starter" class="default-image">
+          <img src="images/s11..png" alt="Style Starter Hover" class="hover-image">
+        </div>
+        
+      </div>
+      <div class="service-item">
+        <div class="image-container">
+          <img src="images/s2.png" alt="True Colors" class="default-image">
+          <img src="images/s22..png" alt="True Colors Hover" class="hover-image">
+        </div>
+       
+      </div>
+      <div class="service-item">
+        <div class="image-container">
+          <img src="images/s3.png" alt="Confident Closet" class="default-image">
+          <img src="images/s33..png" alt="Confident Closet Hover" class="hover-image">
+        </div>
+
+    </div>
+    <div class="service-item">
+      <div class="image-container">
+        <img src="images/s4.png" alt="Shop To It" class="default-image">
+        <img src="images/s44..png" alt="Shop To It Hover" class="hover-image">
+      </div>
+     
+    </div>
+  </div>
+</section>
+
+
+<!-- Footer Section -->
+<footer>
+  <div class="footer-container">
+      <div id="connect">
+          <h2 >Connect With Us</h2>
+          <br>
+          <p> <b>Address</b> : 123, Chandigarh, India</p>
+          <p> <b>E-Mail</b>: Fashionfit43@email.com</p>
+          <p><b>Mobile Number</b> : 91+ 9996147084</p>
+          <div class="social-media">
+              <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-google-plus-g"></i></a>
+          </div>
+      </div>
+
+      <div class="footer-buttons">
+          <button class="footer-btn">Read More</button>
+          <button class="footer-btn">View More</button>
+          <button class="footer-btn">Learn More</button>
+          <a href="review.html" class="footer-btn">Send Review</a>
+      </div>
+
+      <div class="footer-map full-width-map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d109744.22709340515!2d76.68831206468504!3d30.732254422013504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390fed0be66ec96b%3A0xa5ff67f9527319fe!2sChandigarh!5e0!3m2!1sen!2sin!4v1729628733145!5m2!1sen!2sin" width="20000" height="750" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+  </div>
+
+  <div class="footer-info">
+      <p>&copy; 2024 Your Website Name. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="index.js"></script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async defer></script>
+</body>
+</html>

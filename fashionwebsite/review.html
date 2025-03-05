@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+        * {
+          box-sizing: border-box;
+          
+        }
+        body {
+  background: linear-gradient(135deg, #ff7e5f, #feb47b);
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+@media (max-width: 768px) {
+    body {
+        display: block;
+        padding: 20px;
+        height: auto;
+        justify-content: flex-start;
+    }
+
+    .feedback-container {
+        max-width: 100%;
+        padding: 20px;
+        margin: 0;
+    }
+
+    .ratings-container {
+        flex-direction: column;
+    }
+
+    .rating {
+        margin: 10px 0;
+    }
+
+    .input-row {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .feedback-container strong {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .feedback-container {
+        padding: 15px;
+    }
+
+    .rating img {
+        width: 30px;
+    }
+
+    .btn {
+        padding: 10px;
+    }
+}
+
+        .feedback-container {
+          background-color: #fff;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+          border-radius: 4px;
+          font-size: 90%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          padding: 30px;
+          max-width: 400px;
+        }
+        .feedback-container strong {
+          line-height: 20px;
+        }
+        .ratings-container {
+          display: flex;
+          margin: 20px 0;
+        }   
+        .rating {
+          flex: 1;
+          cursor: pointer;
+          padding: 20px;
+          margin: 10px 5px;
+        }
+        .rating:hover, .rating.active {
+          border-radius: 4px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .rating img {
+          width: 40px;
+        }
+        .rating small {
+          color: #555;
+          display: inline-block;
+          margin: 10px 0 0;
+        }
+        .rating:hover small, .rating.active small {
+          color: #111;
+        }
+        .email-input {
+          width: 100%;
+          margin: 10px 0;
+        }
+        .email-input input {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          font-size: 90%;
+        }
+        .btn {
+          background-color: #302d2b;
+          color: #fff;
+          border: 0;
+          border-radius: 4px;
+          padding: 12px 30px;
+          cursor: pointer;
+          margin-top: 10px;
+        }
+        .btn:focus {
+          outline: 0;
+        }
+        .btn:active {
+          transform: scale(0.98);
+        }
+        .fa-heart {
+          color: red;
+          font-size: 30px;
+          margin-bottom: 10px;
+        }
+        .review-input {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.review-input textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 90%;
+    resize: none;
+}
+.user-info, .input-group {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.input-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: left;
+}
+
+.input-group label {
+    margin-bottom: 5px;
+    font-size: 90%;
+    font-weight: bold;
+    color: #555;
+    text-align: left;
+}
+
+.input-group input, .input-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 90%;
+    resize: none;
+}
+
+.input-group input:focus, .input-group textarea:focus {
+    border-color: #888;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.review-input textarea {
+    height: 100px;
+}
+
+.btn {
+    background-color: #302d2b;
+    color: #fff;
+    border: 0;
+    border-radius: 4px;
+    padding: 12px 30px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #4b4846;
+}
+
+
+    </style>
+</head>
+
+<body>
+ 
+  
+        <div id="feedback" class="feedback-container">
+            <strong>How satisfied are you with our <br/> customer support service?</strong>
+
+            <div class="ratings-container">
+                <div class="rating">
+                    <img src="https://img.icons8.com/external-neu-royyan-wijaya/64/000000/external-emoji-neumojis-smiley-neu-royyan-wijaya-17.png" alt="Unsatisfied">
+                    <small>Unsatisfied</small>
+                </div>
+                <div class="rating">
+                    <img src="https://img.icons8.com/external-neu-royyan-wijaya/64/000000/external-emoji-neumojis-smiley-neu-royyan-wijaya-3.png" alt="Neutral">
+                    <small>Neutral</small>
+                </div>
+                <div class="rating active">
+                    <img src="https://img.icons8.com/external-neu-royyan-wijaya/64/000000/external-emoji-neumojis-smiley-neu-royyan-wijaya-30.png" alt="Happy">
+                    <small>Happy</small>
+                </div>
+            </div>
+
+     
+      
+                <div class="user-info">
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="first-name"><strong>First Name:</strong></label>
+                            <input type="text" id="first-name" name="first_name" placeholder="Enter your first name" required>
+                        </div>
+            
+                        <div class="input-group">
+                            <label for="last-name"><strong>Last Name:</strong></label>
+                            <input type="text" id="last-name" name="last_name" placeholder="Enter your last name" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="phone"><strong>Phone Number:</strong></label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                </div>
+            
+                <div class="input-group">
+                    <label for="email"><strong>Email:</strong></label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+            
+                <div class="input-group">
+                    <label for="review"><strong>Review:</strong></label>
+                    <textarea id="review" name="review" rows="4" placeholder="Write your review here..." required></textarea>
+                </div>
+                <button class="btn" id="send">Send Review</button>
+            </form>
+            
+
+    <script>
+        const ratings = document.querySelectorAll('.rating');
+        const ratingsContainer = document.querySelector('.ratings-container');
+        const sendBtn = document.querySelector('#send');
+        const feedback = document.querySelector('#feedback');
+        const emailInput = document.getElementById('email');
+
+        let selectedRating = 'Satisfied';
+
+        ratingsContainer.addEventListener('click', (e) => {
+            if (e.target.parentNode.classList.contains('rating') && e.target.nextElementSibling) {
+                removeActive();
+                e.target.parentNode.classList.add('active');
+                selectedRating = e.target.nextElementSibling.innerHTML;
+            } else if (e.target.parentNode.classList.contains('rating') &&
+                e.target.previousSibling &&
+                e.target.previousElementSibling.nodeName === 'IMG') {
+                removeActive();
+                e.target.parentNode.classList.add('active');
+                selectedRating = e.target.innerHTML;
+            }
+        });
+
+        sendBtn.addEventListener('click', (e) => {
+            const emailValue = emailInput.value;
+            if (emailValue === '') {
+                alert('Please enter your email');
+            } else {
+                feedback.innerHTML = `
+                    <i class="fas fa-heart"></i>
+                    <strong>Thank You!</strong>
+                    <br>
+                    <strong>Feedback: ${selectedRating}</strong>
+                    <p>We'll use your feedback to improve our customer support.</p>
+                    <p>Your email: ${emailValue}</p>`;
+                    setTimeout(() => {
+            window.location.href = 'index.html';
+        }, 2000);
+    }
+            }
+        );
+
+        function removeActive() {
+            ratings.forEach(rating => rating.classList.remove('active'));
+        }
+    </script>
+</body>
+</html>

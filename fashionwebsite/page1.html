@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Listing Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="css/styles1.css">
+</head>
+<body>
+
+
+    <div class="filter-sidebar">
+        <h3>Filter Options</h3>
+
+        <div class="filter-section">
+            <h4>Category</h4>
+            <ul>
+                <li><input type="checkbox" value="sweater" class="category-filter"> Sweater</li>
+                <li><input type="checkbox" value="tshirts" class="category-filter"> T-Shirts</li>
+                <li><input type="checkbox" value="jeans" class="category-filter"> Jeans</li>
+                <li><input type="checkbox" value="jackets" class="category-filter"> Jackets</li>
+               
+            </ul>
+        </div>
+
+        <!-- <div class="filter-section">
+            <h4>Price</h4>
+            <input type="range" id="priceRange" min="250" max="8900" step="5">
+            <p>Price: Rs.<span id="priceValue">250</span></p>
+        </div> -->
+
+        <div class="filter-section">
+            <h4>Color</h4>
+            <ul>
+                <li><input type="checkbox" value="black" class="color-filter"> Black</li>
+                <li><input type="checkbox" value="grey" class="color-filter"> Grey</li>
+                <!-- <li><input type="checkbox" value="red" class="color-filter"> Red</li> -->
+                <li><input type="checkbox" value="blue" class="color-filter"> Blue</li>
+                <li><input type="checkbox" value="white" class="color-filter"> White</li>
+            </ul>
+        </div>
+
+        <div class="filter-section">
+            <h4>Size</h4>
+            <ul>
+                <li><input type="checkbox" value="S" class="size-filter"> S</li>
+                <li><input type="checkbox" value="M" class="size-filter"> M</li>
+                <li><input type="checkbox" value="L" class="size-filter"> L</li>
+                <li><input type="checkbox" value="XL" class="size-filter"> XL</li>
+            </ul>
+        </div>
+    </div>
+
+   
+
+        
+        <div class="active-filters">
+            <h4>Active Filters:</h4>
+            <div id="activeFilters"></div>
+            <button id="clearFilters">Clear All</button>
+        </div>
+
+        
+        <section id="productGrid" class="product-grid">
+            <div class="product-card" data-category="tshirts" data-color="white" data-size="M" data-price="499">
+                <a href="page1/page3.html">
+                <div class="product-image">
+                    <img src="images/tops-1.jpg" alt="Trendy Brown Coat">
+                   
+                    <div class="hover-icons">
+                        <button class="wishlist"><i class="fas fa-heart"></i></button>
+                        <!-- <button class="add-to-cart"><i class="fas fa-shopping-bag"></i></button> -->
+                    </div>
+                </a>
+                </div>
+                <div class="product-details">
+                    <h4>Trendy White Top</h4>
+                    <p class="price">Rs.499.00 <span class="original-price">Rs.1150.00</span></p>
+                </div>
+            </div>
+        
+            <div class="product-card" data-category="tshirts" data-color="blue" data-size="S" data-price="750">
+                <a href="page1/page4.html">
+                <div class="product-image">
+                    <img src="images/tops-2.jpg" alt="Trendy Brown Coat">
+                    <div class="product-label">50% off</div>
+                    <div class="hover-icons">
+                        <button class="wishlist"><i class="fas fa-heart"></i></button>
+                        <!-- <button class="add-to-cart"><i class="fas fa-shopping-bag"></i></button> -->
+                    </div>
+                </a>
+                </div>
+                <div class="product-details">
+                    <h4>Crop Top</h4>
+                    <p class="price">Rs.750.00 <span class="original-price">Rs.1250.00</span></p>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="jeans" data-color="blue" data-size="L" data-price="1500">
+                <a href="page1/page5.html">
+                <div class="product-image">
+                    <img src="images/jeans1a.jpg" alt="Trendy Brown Coat">
+                    <div class="product-label">50% off</div>
+                    <div class="hover-icons">
+                        <button class="wishlist"><i class="fas fa-heart"></i></button>
+                        <!-- <button class="add-to-cart"><i class="fas fa-shopping-bag"></i></button> -->
+                    </div>
+                </a>
+                </div>
+                <div class="product-details">
+                    <h4>Trendy Women Jeans</h4>
+                    <p class="price">Rs.1500.00 <span class="original-price">Rs.3050.00</span></p>
+                </div>
+           
+            </div>
+
+            <div class="product-card" data-category="jackets" data-color="blue" data-size="M" data-price="6750">
+                <a href="page1/page6.html">
+                <div class="product-image">
+                    <img src="images/jacket1.jpg" alt="Trendy Brown Coat">
+                    <!-- <div class="product-label">50% off</div> -->
+                    <div class="hover-icons">
+                        <button class="wishlist"><i class="fas fa-heart"></i></button>
+                        <!-- <button class="add-to-cart"><i class="fas fa-shopping-bag"></i></button> -->
+                    </div>
+                </a>
+                </div>
+                <div class="product-details">
+                    <h4>Denim Jacket</h4>
+                    <p class="price">Rs.6,700.00 </p>
+                </div>
+            </div>
+
+
+            <div class="product-card" data-category="jackets" data-color="black" data-size="M" data-price="75">
+                <a href="page1/page7.html">
+                <div class="product-image">
+                    <img src="images/leather1.jpg" alt="Trendy Brown Coat">
+                    <div class="product-label">50% off</div>
+                    <div class="hover-icons">
+                        <button class="wishlist"><i class="fas fa-heart"></i></button>
+                        <!-- <button class="add-to-cart"><i class="fas fa-shopping-bag"></i></button> -->
+                    </div>
+                </a>
+                </div>
+                <div class="product-details">
+                    <h4>Trendy Leather Jacket</h4>
+                    <p class="price">Rs.8,999.00 <span class="original-price">Rs.10,999.00</span></p>
+                </div>
+            </div>
+
+
+            <div class="product-card" data-category="sweater" data-color="grey" data-size="M" data-price="700">
+                <a href="page1/page8.html">
+                <div class="product-image">
+                    <img src="images/top3.jpg" alt="Trendy Brown Coat">
+                    <!-- <div class="product-label">50% off</div> -->
+                    <div class="hover-icons">
+                        <button class="wishlist"><i class="fas fa-heart"></i></button>
+                        <!-- <button class="add-to-cart"><i class="fas fa-shopping-bag"></i></button> -->
+                    </div>
+                </a>
+                </div>
+                <div class="product-details">
+                    <h4>Sweater Top</h4>
+                    <p class="price">Rs.700.00</p>
+                </div>
+            </div>
+
+
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

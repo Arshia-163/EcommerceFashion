@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page </title>
+    <link rel="stylesheet" href="page3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="product-page">
+        <div class="product-images">
+            <div class="main-image">
+                <img id="mainImage" src="../images/top3.jpg" alt="Product Image">
+            </div>
+            <div class="image-thumbnails">
+                <div class="thumbnail-container">
+                    <img class="thumbnail" src="../images/top3a.jpg" alt="Thumbnail 1" onclick="changeImage(this)">
+                    <img class="thumbnail" src="../images/top3.jpg" alt="Thumbnail 2" onclick="changeImage(this)">
+                    <img class="thumbnail" src="../images/top3b.jpg" alt="Thumbnail 3" onclick="changeImage(this)">
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="product-details">
+            <h1>Basics</h1>
+            <p>Women Sweater Top</p>
+            <div class="pricing">
+                <span class="discounted-price">₹700</span>
+                <!-- <span class="original-price">₹1999</span>
+                <span class="discount">(75% OFF)</span>-->
+            </div> 
+            <p class="tax-info">Inclusive of all taxes</p>
+
+            <div class="size-selection">
+                <h4>Select Size</h4>
+                <div class="size-buttons">
+                    <button>XS</button>
+                    <button>S</button>
+                    <button>M</button>
+                    <button>L</button>
+                    <button>XL</button>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <!-- <button class="add-to-bag">Add to Bag</button> -->
+                <button class="wishlist">Wishlist</button>
+                <button class="wishlist">Add to Bag</button>
+            </div>
+
+            <ul class="additional-info">
+                <li>100% Original Products</li>
+                <li>Pay on delivery might be available</li>
+                <li>Easy 7 days returns and exchanges</li>
+            </ul>
+        </div>
+    </div>
+ <!-- Cart Icon -->
+ <div class="cart-icon">
+    <img src="cart-icon.png" alt="Cart Icon" onclick="viewCart()">
+    <span id="cart-count">0</span>
+</div>
+<!-- Cart Sidebar Popup -->
+<div id="cartSidebar" class="cart-sidebar">
+    <div class="cart-header">
+        <h2>Your Cart</h2>
+        <span class="close-btn" onclick="closeCartSidebar()">×</span>
+    </div>
+    <div id="cartItems" class="cart-items">
+        <!-- Cart items will be listed here -->
+    </div>
+    <div class="cart-footer">
+        <p>Total: ₹<span id="cartTotal">0</span></p>
+    </div>
+</div>
+    <script src="script2.js"></script>
+</body>
+</html>

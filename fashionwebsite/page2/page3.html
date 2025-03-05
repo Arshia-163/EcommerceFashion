@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page Clone</title>
+    <link rel="stylesheet" href="next.css">
+</head>
+<body>
+    <div class="product-page">
+        <div class="product-images">
+            <div class="main-image">
+                <img id="mainImage" src="../images/yo.jpeg" alt="Product Image">
+            </div>
+            <div class="image-thumbnails">
+                <div class="thumbnail-container">
+                    <img class="thumbnail" src="../images/yo.jpeg" alt="Thumbnail 1" onclick="changeImage(this)">
+                    <img class="thumbnail" src="../images/three.jpeg" alt="Thumbnail 2" onclick="changeImage(this)">
+                    <img class="thumbnail" src="../images/three1.jpeg" alt="Thumbnail 3" onclick="changeImage(this)">
+                    <!-- <img class="thumbnail" src="images/lipstic.jpg" alt="Thumbnail 4" onclick="changeImage(this)"> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="product-details">
+            <h1></h1>
+            <p>Women Plain A-Line Casual Top</p>
+            <div class="pricing">
+                <span class="discounted-price">₹499</span>
+                <span class="original-price">₹1999</span>
+                <span class="discount">(75% OFF)</span>
+            </div>
+            <p class="tax-info">Inclusive of all taxes</p>
+
+            <div class="size-selection">
+                <h4>Select Size</h4>
+                <div class="size-buttons">
+                    <button>XS</button>
+                    <button>S</button>
+                    <button>M</button>
+                    <button>L</button>
+                    <button>XL</button>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <!-- <button class="add-to-bag">Add to Bag</button> -->
+                <button class="wishlist">Wishlist</button>
+            </div>
+
+            <!-- <div class="delivery-options">
+                <h4>Delivery Options</h4>
+                <input type="text" placeholder="Enter pincode">
+                <button class="check-button">Check</button>
+            </div> -->
+
+            <ul class="additional-info">
+                <li>100% Original Products</li>
+                <li>Pay on delivery might be available</li>
+                <li>Easy 7 days returns and exchanges</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="next.js"></script>
+</body>
+</html>
