@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "name": "Women  Straight-Fit Jeans",
+    "price": 2000,
+    "quantity": 1
+  },
+  {
+    "name": "Women Plain A-Line Casual Top",
+    "price": 499,
+    "quantity": 2
+  }
+]

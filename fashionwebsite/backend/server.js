@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, '..')));
 const DATA_FILE = path.join(__dirname, 'data.json');
 const REVIEW_FILE = path.join(__dirname, 'reviews.json');
 const CART_FILE = path.join(__dirname, 'cart.json');
-const WISH_FILE = path.join(__dirname, 'wish.json');
+// const WISH_FILE = path.join(__dirname, 'wish.json');
 
 
 function readJSONFile(filePath, defaultValue) {
@@ -173,6 +173,50 @@ app.delete('/api/cart/:name', (req, res) => {
     res.json({ message: 'Item removed from cart', cart });
 });
 
+
+
+const WISH_FILE = path.join(__dirname, 'wish.json');
+let wishlist = readJSONFile(WISH_FILE, []);
+
+function saveWishlist() {
+    fs.writeFileSync(WISH_FILE, JSON.stringify(wishlist, null, 2));
+}
+
+// Add item to wishlist
+app.post('/api/wishlist', (req, res) => {
+    const { name, price } = req.body;
+    if (!name || !price) {
+        return res.status(400).json({ error: 'All fields are required' });
+    }
+    const existingItem = wishlist.find(item => item.name === name);
+    if (existingItem) {
+        return res.status(400).json({ error: 'Item already in wishlist' });
+    }
+    wishlist.push({ name, price, quantity: 1 });
+    saveWishlist();
+    res.json({ message: 'Item added to wishlist', wishlist });
+});
+
+// Get wishlist items
+app.get('/api/wishlist', (req, res) => {
+    res.json(wishlist);
+});
+
+// Remove item from wishlist
+app.delete('/api/wishlist/:name', (req, res) => {
+    const itemName = req.params.name;
+    const itemIndex = wishlist.findIndex(item => item.name === itemName);
+    if (itemIndex === -1) {
+        return res.status(404).json({ error: 'Item not found in wishlist' });
+    }
+    wishlist.splice(itemIndex, 1);
+    saveWishlist();
+    res.json({ message: 'Item removed from wishlist', wishlist });
+});
+
+
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+

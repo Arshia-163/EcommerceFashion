@@ -105,3 +105,97 @@ function closeCartSidebar() {
 document.addEventListener('DOMContentLoaded', () => {
     loadCart();
 });
+
+
+
+const WISHLIST_API_URL = 'http://localhost:5000/api/wishlist';
+
+async function loadWishlist() {
+    try {
+        const response = await fetch(WISHLIST_API_URL);
+        if (!response.ok) throw new Error('Failed to load wishlist');
+        const wishlist = await response.json();
+
+        const wishlistContainer = document.getElementById('wishlistItems');
+        wishlistContainer.innerHTML = "";
+        let total = 0;
+
+        wishlist.forEach(item => {
+            total += item.price * item.quantity;
+
+            const wishlistItem = document.createElement("div");
+            wishlistItem.classList.add("wishlist-item");
+            wishlistItem.innerHTML = `
+                <span>${item.name}</span>
+                <button class="remove-btn" data-name="${item.name}">Remove</button>
+            `;
+            wishlistContainer.appendChild(wishlistItem);
+        });
+
+        document.getElementById("wishlistTotal").innerText = `₹${total}`;
+        updateWishlistIcon(wishlist.length);
+    } catch (error) {
+        console.error('Error loading wishlist:', error);
+    }
+}
+
+function updateWishlistIcon(count) {
+    const wishlistCountElement = document.getElementById("wishlist-count");
+    if (wishlistCountElement) {
+        wishlistCountElement.textContent = count;
+    }
+}
+
+async function addToWishlist(name, price) {
+    try {
+        await fetch(WISHLIST_API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, price })
+        });
+        await loadWishlist();
+        alert(`${name} has been added to the wishlist!`);
+    } catch (error) {
+        console.error('Error adding item to wishlist:', error);
+    }
+}
+
+document.querySelectorAll(".wishlist").forEach(button => {
+    button.addEventListener("click", function () {
+        const itemName = document.querySelector(".addToBagBtn").getAttribute("data-name");
+        const itemPrice = parseInt(document.querySelector(".addToBagBtn").getAttribute("data-price"));
+        addToWishlist(itemName, itemPrice);
+    });
+});
+
+async function removeFromWishlist(name) {
+    try {
+        await fetch(`${WISHLIST_API_URL}/${encodeURIComponent(name)}`, { method: 'DELETE' });
+        await loadWishlist();
+    } catch (error) {
+        console.error('Error removing item from wishlist:', error);
+    }
+}
+
+document.getElementById('wishlistItems').addEventListener('click', function (event) {
+    if (event.target.classList.contains('remove-btn')) {
+        const itemName = event.target.getAttribute("data-name");
+        removeFromWishlist(itemName);
+    }
+});
+
+function toggleWishlistSidebar() {
+    const sidebar = document.getElementById("wishlistSidebar");
+    sidebar.style.right = sidebar.style.right === "0px" ? "-300px" : "0px";
+}
+
+function closeWishlistSidebar() {
+    document.getElementById("wishlistSidebar").style.right = "-300px";
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadWishlist();
+});
+
+
+
