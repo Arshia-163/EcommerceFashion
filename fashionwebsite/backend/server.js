@@ -15,6 +15,7 @@ app.use(express.static(path.join(__dirname, '..')));
 const DATA_FILE = path.join(__dirname, 'data.json');
 const REVIEW_FILE = path.join(__dirname, 'reviews.json');
 const CART_FILE = path.join(__dirname, 'cart.json');
+const WISH_FILE = path.join(__dirname, 'wish.json');
 
 
 function readJSONFile(filePath, defaultValue) {

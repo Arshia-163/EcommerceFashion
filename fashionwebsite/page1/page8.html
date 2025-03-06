@@ -57,6 +57,24 @@
             </ul>
         </div>
     </div>
+    <div class="wishlist-icon" id="wishlistIcon" onclick="toggleWishlistSidebar()">
+        <i class="fas fa-heart"></i> <!-- Font Awesome heart icon -->
+        <span id="wishlist-count">0</span>
+    </div>
+    
+    <!-- Wishlist Sidebar Popup -->
+    <div id="wishlistSidebar" class="wishlist-sidebar">
+        <div class="wishlist-header">
+            <h2>Your Wishlist</h2>
+            <span class="close-btn" onclick="closeWishlistSidebar()">×</span>
+        </div>
+        <div id="wishlistItems" class="wishlist-items">
+            <!-- Wishlist items will be listed here -->
+        </div>
+        <div class="wishlist-footer">
+            <p>Total: ₹<span id="wishlistTotal">0</span></p>
+        </div>
+    </div>
  <!-- Cart Icon -->
  <div class="cart-icon" id="cartIcon" onclick="toggleCartSidebar()">
     <i class="fas fa-shopping-cart"></i> <!-- Font Awesome cart icon -->
