@@ -202,6 +202,31 @@ a {
     color: white;
 }
 
+.addToBagBtn {
+    padding: 15px 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.addToBagBtn{
+    background-color: white;
+    border: 1px solid #ccc;
+    color: #ff3e6c;
+}
+
+.addToBagBtn:hover {
+    background-color: #f0f0f0;
+    color: #e63946;
+}
+.addToBagBtn.active {
+    background-color: pink;
+    color: white;
+}
+
 .check-button {
     padding: 10px 20px;
     background-color: #ff3e6c;

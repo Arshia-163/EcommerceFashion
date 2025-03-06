@@ -70,5 +70,23 @@
     "email": "arshia0045.be23@chitkara.edu.in",
     "review": "great",
     "date": "2025-03-05T13:50:25.947Z"
+  },
+  {
+    "id": 9,
+    "firstName": "ARSHIA",
+    "lastName": "gupta",
+    "phone": "7006132085",
+    "email": "arshia0045.be23@chitkara.edu.in",
+    "review": "hittt",
+    "date": "2025-03-06T09:01:35.177Z"
+  },
+  {
+    "id": 10,
+    "firstName": "John",
+    "lastName": "Doe",
+    "phone": "1234567890",
+    "email": "john@example.com",
+    "review": "Great service!",
+    "date": "2025-03-06T10:48:06.165Z"
   }
 ]

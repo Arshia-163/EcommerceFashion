@@ -11,11 +11,12 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '..')));
 
-// Paths to JSON files
+
 const DATA_FILE = path.join(__dirname, 'data.json');
 const REVIEW_FILE = path.join(__dirname, 'reviews.json');
+const CART_FILE = path.join(__dirname, 'cart.json');
 
-// Function to read JSON file safely
+
 function readJSONFile(filePath, defaultValue) {
     try {
         if (!fs.existsSync(filePath) || fs.statSync(filePath).size === 0) {
@@ -29,9 +30,10 @@ function readJSONFile(filePath, defaultValue) {
     }
 }
 
-// Initialize data
+
 let data = readJSONFile(DATA_FILE, { users: {} });
 let reviews = readJSONFile(REVIEW_FILE, []);
+let cart = readJSONFile(CART_FILE, []);
 
 // Function to save JSON data safely
 function saveData() {
@@ -40,6 +42,10 @@ function saveData() {
 
 function saveReviews() {
     fs.writeFileSync(REVIEW_FILE, JSON.stringify(reviews, null, 2));
+}
+
+function saveCart() {
+    fs.writeFileSync(CART_FILE, JSON.stringify(cart, null, 2));
 }
 
 app.get('/', (req, res) => {
@@ -134,6 +140,36 @@ app.delete('/api/review/:id', (req, res) => {
     saveReviews();
 
     res.json({ message: 'Review deleted successfully' });
+});
+
+app.post('/api/cart', (req, res) => {
+    const { name, price, quantity } = req.body;
+    if (!name || !price || !quantity) {
+        return res.status(400).json({ error: 'All fields are required' });
+    }
+    const existingItem = cart.find(item => item.name === name);
+    if (existingItem) {
+        existingItem.quantity += quantity;
+    } else {
+        cart.push({ name, price, quantity });
+    }
+    saveCart();
+    res.json({ message: 'Item added to cart', cart });
+});
+
+app.get('/api/cart', (req, res) => {
+    res.json(cart);
+});
+
+app.delete('/api/cart/:name', (req, res) => {
+    const itemName = req.params.name;
+    const itemIndex = cart.findIndex(item => item.name === itemName);
+    if (itemIndex === -1) {
+        return res.status(404).json({ error: 'Item not found in cart' });
+    }
+    cart.splice(itemIndex, 1);
+    saveCart();
+    res.json({ message: 'Item removed from cart', cart });
 });
 
 app.listen(PORT, () => {

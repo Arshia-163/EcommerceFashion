@@ -1,131 +1,152 @@
+
 const thumbnails = document.querySelectorAll('.thumbnail');
 const mainImage = document.getElementById("mainImage");
 
-// Change the main image based on the clicked thumbnail
+// Change the main image when a thumbnail is clicked
 function changeImage(thumbnail) {
-    const newSrc = thumbnail.src;
-    mainImage.src = newSrc.replace("200x300", "400x600");
+    mainImage.src = thumbnail.src;
 }
 
-// Add event listeners to thumbnails for click events
-thumbnails.forEach((thumbnail) => {
+thumbnails.forEach(thumbnail => {
     thumbnail.addEventListener('click', function () {
         changeImage(thumbnail);
     });
 });
 
-
+// Zoom effect on main image
 mainImage.addEventListener('click', function () {
-    if (mainImage.style.transform === "scale(1.5)") {
-        mainImage.style.transform = "scale(1)";
-    } else {
-        mainImage.style.transform = "scale(1.5)";
-    }
-});
-const wishlistButton = document.querySelector('.wishlist');
-
-
-// Toggle the active state when the button is clicked
-wishlistButton.addEventListener('click', function() {
-    this.classList.toggle('active');
+    this.style.transform = this.style.transform === "scale(1.5)" ? "scale(1)" : "scale(1.5)";
 });
 
-
-// Cart functionality in script2.js
-
-let cart = []; // To store cart items
-let cartCount = 0; // To store the number of items in the cart
-
-// Update cart count in the UI
-function updateCartCount() {
-    document.getElementById("cart-count").innerText = cartCount;
-}
-
-// Add item to cart
-document.getElementById("addToBagBtn").addEventListener("click", function() {
-    const item = {
-        name: "Women Plain A-Line Casual Top",
-        price: 499,
-        quantity: 1
-    };
-
-    // Check if item is already in cart
-    const existingItem = cart.find(cartItem => cartItem.name === item.name);
-
-    if (existingItem) {
-        // If item exists, increase quantity
-        existingItem.quantity += 1;
-    } else {
-        // Add new item to cart
-        cart.push(item);
-    }
-
-    cartCount += 1; // Update cart count
-    updateCartCount(); // Update UI cart count
-    alert("Your item has been added to the cart!");
-    updateCartSidebar(); // Update cart sidebar
-});
-
-// Update cart sidebar
-function updateCartSidebar() {
-    const cartItemsContainer = document.getElementById("cartItems");
-    cartItemsContainer.innerHTML = ""; // Clear previous items
-
-    let total = 0;
-
-    cart.forEach(item => {
-        total += item.price * item.quantity;
-
-        // Create cart item
-        const cartItem = document.createElement("div");
-        cartItem.classList.add("cart-item");
-
-        cartItem.innerHTML = `
-            <span>${item.name}</span>
-            <div class="quantity-buttons">
-                <button onclick="increaseQuantity('${item.name}')">+</button>
-                <span>${item.quantity}</span>
-                <button onclick="decreaseQuantity('${item.name}')">-</button>
-            </div>
-        `;
-
-        cartItemsContainer.appendChild(cartItem);
+// ---- WISHLIST BUTTON FUNCTIONALITY ----
+const wishlistButtons = document.querySelectorAll('.wishlist');
+wishlistButtons.forEach(button => {
+    button.addEventListener('click', function () {
+        this.classList.toggle('active');
     });
+});
 
-    // Update total
-    document.getElementById("cartTotal").innerText = total;
-}
+// ---- CART FUNCTIONALITY ----
+const API_URL = 'http://localhost:5000/api/cart'; // Ensure correct API URL
 
-// Increase quantity of item
-function increaseQuantity(itemName) {
-    const item = cart.find(cartItem => cartItem.name === itemName);
-    if (item) {
-        item.quantity += 1; // Increase quantity
-        cartCount += 1; // Increase cart count
-        updateCartCount(); // Update UI cart count
-        updateCartSidebar(); // Update cart sidebar
+async function loadCart() {
+    try {
+        const response = await fetch(API_URL);
+        if (!response.ok) throw new Error('Failed to load cart');
+        const cart = await response.json();
+
+        const cartContainer = document.getElementById('cartItems');
+        cartContainer.innerHTML = ""; // Clear previous cart display
+        let total = 0;
+        let totalQuantity = 0; // Track total items in cart
+
+        cart.forEach(item => {
+            total += item.price * item.quantity;
+            totalQuantity += item.quantity; // Add quantity to cart count
+
+            // Create cart item dynamically
+            const cartItem = document.createElement("div");
+            cartItem.classList.add("cart-item");
+            cartItem.innerHTML = `
+                <span>${item.name}</span>
+                <div class="quantity-buttons">
+                    <button class="decrease-btn" data-name="${item.name}">-</button>
+                    <span>${item.quantity}</span>
+                    <button class="increase-btn" data-name="${item.name}">+</button>
+                </div>
+                <button class="remove-btn" data-name="${item.name}">Remove</button>
+            `;
+            cartContainer.appendChild(cartItem);
+        });
+
+        document.getElementById("cartTotal").innerText = `₹${total}`;
+        updateCartIcon(totalQuantity); // Update cart icon count
+    } catch (error) {
+        console.error('Error loading cart:', error);
     }
 }
 
-// Decrease quantity of item
-function decreaseQuantity(itemName) {
-    const item = cart.find(cartItem => cartItem.name === itemName);
-    if (item && item.quantity > 1) {
-        item.quantity -= 1; // Decrease quantity
-        cartCount -= 1; // Decrease cart count
-        updateCartCount(); // Update UI cart count
-        updateCartSidebar(); // Update cart sidebar
+
+function updateCartIcon(count) {
+    const cartCountElement = document.getElementById("cart-count");
+    if (cartCountElement) {
+        cartCountElement.textContent = count;
     }
 }
 
-// Show or hide the cart sidebar
+
+async function addToCart(name, price) {
+    try {
+        await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, price, quantity: 1 })
+        });
+        await loadCart(); 
+        alert(`${name} has been added to the cart!`);
+    } catch (error) {
+        console.error('Error adding item:', error);
+    }
+}
+
+
+document.querySelectorAll(".addToBagBtn").forEach(button => {
+    button.addEventListener("click", function () {
+        const itemName = this.getAttribute("data-name");
+        const itemPrice = parseInt(this.getAttribute("data-price"));
+        addToCart(itemName, itemPrice);
+    });
+});
+
+
+async function updateQuantity(name, quantity) {
+    if (quantity < 1) return removeFromCart(name);
+    try {
+        await fetch(`${API_URL}/${encodeURIComponent(name)}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ quantity })
+        });
+        await loadCart();
+    } catch (error) {
+        console.error('Error updating quantity:', error);
+    }
+}
+
+
+async function removeFromCart(name) {
+    try {
+        await fetch(`${API_URL}/${encodeURIComponent(name)}`, { method: 'DELETE' });
+        await loadCart(); 
+    } catch (error) {
+        console.error('Error removing item:', error);
+    }
+}
+
+
+document.getElementById('cartItems').addEventListener('click', function (event) {
+    if (event.target.classList.contains('increase-btn')) {
+        const itemName = event.target.getAttribute("data-name");
+        updateQuantity(itemName, 1);
+    } else if (event.target.classList.contains('decrease-btn')) {
+        const itemName = event.target.getAttribute("data-name");
+        updateQuantity(itemName, -1);
+    } else if (event.target.classList.contains('remove-btn')) {
+        const itemName = event.target.getAttribute("data-name");
+        removeFromCart(itemName);
+    }
+});
+
+
 function toggleCartSidebar() {
     const sidebar = document.getElementById("cartSidebar");
-    const sidebarRight = sidebar.style.right === "0px" ? "-300px" : "0px";
-    sidebar.style.right = sidebarRight;
+    sidebar.style.right = sidebar.style.right === "0px" ? "-300px" : "0px";
 }
 
 // Close the cart sidebar
 function closeCartSidebar() {
     document.getElementById("cartSidebar").style.right = "-300px";
 }
+
+
+document.addEventListener('DOMContentLoaded', loadCart);

@@ -25,9 +25,9 @@
 
         <div class="product-details">
             <h1>Basics</h1>
-            <p>Women Plain A-Line Casual Top</p>
+            <p>Womens Printed Crop Top</p>
             <div class="pricing">
-                <span class="discounted-price">₹499</span>
+                <span class="discounted-price">₹599</span>
                 <span class="original-price">₹1999</span>
                 <span class="discount">(75% OFF)</span>
             </div>
@@ -47,7 +47,7 @@
             <div class="action-buttons">
     
                 <button class="wishlist">Wishlist</button>
-                <button class="wishlist">Add to Bag</button>
+                <button class="addToBagBtn" data-name="Womens Printed Crop Top" data-price="599">Add to Bag</button>
             </div>
 
 
@@ -59,9 +59,22 @@
         </div>
     </div>
      <!-- Cart Icon -->
-     <div class="cart-icon">
-        <img src="cart-icon.png" alt="Cart Icon" onclick="viewCart()">
+     <div class="cart-icon" id="cartIcon" onclick="toggleCartSidebar()">
+        <i class="fas fa-shopping-cart"></i> <!-- Font Awesome cart icon -->
         <span id="cart-count">0</span>
+    </div>
+    <!-- Cart Sidebar Popup -->
+    <div id="cartSidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <span class="close-btn" onclick="closeCartSidebar()">×</span>
+        </div>
+        <div id="cartItems" class="cart-items">
+            <!-- Cart items will be listed here -->
+        </div>
+        <div class="cart-footer">
+            <p>Total: ₹<span id="cartTotal">0</span></p>
+        </div>
     </div>
 
     <script src="script2.js"></script>

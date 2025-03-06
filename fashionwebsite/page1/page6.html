@@ -47,7 +47,7 @@
             <div class="action-buttons">
                 <!-- <button class="add-to-bag">Add to Bag</button> -->
                 <button class="wishlist">Wishlist</button>
-                <button class="wishlist">Add to Bag</button>
+                <button class="addToBagBtn" data-name="Women Denim Jacket" data-price="6700">Add to Bag</button>
             </div>
 
             <ul class="additional-info">
@@ -57,9 +57,9 @@
             </ul>
         </div>
     </div>
- <!-- Cart Icon -->
- <div class="cart-icon">
-    <img src="cart-icon.png" alt="Cart Icon" onclick="viewCart()">
+  <!-- Cart Icon -->
+  <div class="cart-icon" id="cartIcon" onclick="toggleCartSidebar()">
+    <i class="fas fa-shopping-cart"></i> <!-- Font Awesome cart icon -->
     <span id="cart-count">0</span>
 </div>
 <!-- Cart Sidebar Popup -->
